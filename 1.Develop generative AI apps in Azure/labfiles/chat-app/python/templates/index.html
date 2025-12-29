@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chat UI</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <div class="chat-container">
+      <h1>Chat</h1>
+      <div id="messages" class="messages"></div>
+
+      <form id="chat-form">
+        <input id="message-input" type="text" placeholder="Type a message..." autocomplete="off" />
+        <button type="submit">Send</button>
+        <button id="reset-btn" type="button">Reset</button>
+      </form>
+    </div>
+
+    <script src="/static/chat.js"></script>
+  </body>
+</html>

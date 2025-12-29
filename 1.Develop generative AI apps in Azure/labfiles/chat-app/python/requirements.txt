@@ -1,0 +1,9 @@
+python-dotenv
+azure-identity
+azure-ai-projects
+openai
+flask
+python-dotenv
+azure-identity
+azure-ai-projects
+openai
