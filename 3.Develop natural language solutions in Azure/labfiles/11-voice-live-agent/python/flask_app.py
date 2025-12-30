@@ -201,9 +201,40 @@ class BasicVoiceAssistant:
     """
 
     # BEGIN VOICE LIVE ASSISTANT IMPLEMENTATION - ALIGN CODE WITH COMMENT
+    def __init__(
+        self,
+        endpoint: str,
+        credential,
+        model: str,
+        voice: str,
+        instructions: str,
+        state_callback=None,
+    ):
+        # Store Azure Voice Live connection and configuration parameters
+        self.endpoint = endpoint
+        self.credential = credential
+        self.model = model
+        self.voice = voice
+        self.instructions = instructions
 
+        # Initialize runtime state - connection established in start()
+        self.connection = None
+        self._response_cancelled = False  # Used to handle user interruptions
+        self._stopping = False  # Signals graceful shutdown
+        self.state_callback = state_callback or (lambda *_: None)
 
-    
+    async def start(self):
+        # Import Voice Live SDK components needed for establishing connection and configuring session
+        from azure.ai.voicelive.aio import connect  # type: ignore
+        from azure.ai.voicelive.models import (
+            RequestSession,
+            ServerVad,
+            AzureStandardVoice,
+            Modality,
+            InputAudioFormat,
+            OutputAudioFormat,
+        )  # type: ignore
+
     # END VOICE LIVE ASSISTANT IMPLEMENTATION
 
         verbose_val = __import__('os').environ.get('VOICE_LIVE_VERBOSE', '0').strip()
